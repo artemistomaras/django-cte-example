@@ -2,7 +2,7 @@
 
 ## About
 
-This project demonstrates the usage of Common Table Expressions (CTE) in Django using the package ```django-cte``` and PostgreSQL.
+This project demonstrates the usage of Common Table Expressions (CTE) in Django using the package [django-cte](https://github.com/dimagi/django-cte) and PostgreSQL.
 
 ## Installation
 
