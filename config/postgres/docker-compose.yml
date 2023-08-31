@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  # PostgreSQL Service
+  django_cte_db:
+    image: bitnami/postgresql:15.2.0-debian-11-r14
+    restart: unless-stopped
+    shm_size: 1g
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=django_cte
+    ports:
+      - "35432:5432"
+    volumes:
+      - db_data:/bitnami/postgresql
+    hostname: django_cte_db
+volumes:
+  db_data:
+

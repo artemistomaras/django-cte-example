@@ -1,0 +1,70 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Django CTE Example {% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center">Find stores who's sales where better than the average sales across all stores</h2>
+    <hr/>
+    <table role="grid">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Store ID</th>
+            <th scope="col">Store name</th>
+            <th scope="col">Product name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sale in sales %}
+            <tr>
+                <th scope="row">{{ sale.pk }}</th>
+                <td>{{ sale.store_id }}</td>
+                <td>{{ sale.store.name }}</td>
+                <td>{{ sale.product.name }}</td>
+                <td>{{ sale.quantity }}</td>
+                <td>{{ sale.cost }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 style="text-align: center">SQL query & results</h3>
+    </hr>
+    <table role="grid">
+        <thead>
+        <tr>
+            <th scope="col">Store ID</th>
+            <th scope="col">Total Sales</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in queryset %}
+            <tr>
+                <th scope="row">{{ result.store_id }}</th>
+                <td>{{ result.total_sales }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="sql-code">
+        <pre>
+            <code>
+                {{ query }}
+            </code>
+        </pre>
+    </div>
+
+{% endblock %}
+
+{% block style %}
+    <style>
+        /* Additional custom styling if needed */
+        .sql-code {
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+    </style>
+{% endblock %}
